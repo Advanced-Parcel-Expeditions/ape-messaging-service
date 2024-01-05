@@ -66,11 +66,16 @@
             <version>6.0.53</version>
             <scope>provided</scope>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
+            <version>3.22.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java-util</artifactId>
             <version>3.22.2</version>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
     <build>
@@ -112,8 +117,12 @@
                     <protocArtifact>com.google.protobuf:protoc:3.22.2:exe:$(os.detected.classifier)</protocArtifact>
                     <pluginId>grpc-java</pluginId>
                     <pluginArtifact>io.grpc:protoc-gen-grpc-java:1.56.1:exe:${os.detected.classifier}</pluginArtifact>
-                    <protocExecutable>protoc</protocExecutable>
+                    <!--<protocExecutable>protoc</protocExecutable>-->
                     <!--<outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>-->
+                    <additionalProtoPathElements>
+                        <additionalProtoPathElement>${project.basedir}/src/main/resources</additionalProtoPathElement>
+                    </additionalProtoPathElements>
+                    <protocArtifact>com.google.protobuf:protoc:3.7.0:exe:${os.detected.classifier}</protocArtifact>
 
                 </configuration>
                 <executions>
