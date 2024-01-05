@@ -9,3 +9,7 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/APEParcelDS
+  grpc:
+    server:
+      http:
+        port: 8081

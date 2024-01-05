@@ -3,8 +3,17 @@ package si.ape.messaging.models.converters;
 import si.ape.messaging.lib.User;
 import si.ape.messaging.models.entities.UserEntity;
 
+/**
+ * The UserConverter class provides static methods for converting between User DTO and User Entity objects.
+ */
 public class UserConverter {
 
+    /**
+     * Converts a UserEntity object to a User DTO.
+     *
+     * @param entity The UserEntity object to convert.
+     * @return The converted User DTO.
+     */
     public static User toDto(UserEntity entity) {
 
         User dto = new User();
@@ -17,6 +26,12 @@ public class UserConverter {
 
     }
 
+    /**
+     * Converts a User DTO to a UserEntity object.
+     *
+     * @param dto The User DTO to convert.
+     * @return The converted UserEntity object.
+     */
     public static UserEntity toEntity(User dto) {
 
         UserEntity entity = new UserEntity();

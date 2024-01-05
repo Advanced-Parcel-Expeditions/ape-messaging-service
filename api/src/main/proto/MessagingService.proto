@@ -1,0 +1,95 @@
+syntax = "proto3";
+
+package si.ape.messaging.api.v1;
+
+service MessagingService {
+    rpc SendMessage (SendMessageRequest) returns (SendMessageResponse) {}
+    rpc LoadConversation (LoadConversationRequest) returns (LoadConversationResponse) {}
+    rpc AddUserToConversation (AddUserToConversationRequest) returns (AddUserToConversationResponse) {}
+    rpc RemoveUserFromConversation (RemoveUserFromConversationRequest) returns (RemoveUserFromConversationResponse) {}
+    rpc CreateConversation (CreateConversationRequest) returns (CreateConversationResponse) {}
+    rpc LoadConversations (LoadConversationsRequest) returns (LoadConversationsResponse) {}
+}
+
+// Send message objects.
+
+message SendMessageRequest {
+    string conversation_id = 1;
+    string sender_id = 2;
+    string message = 3;
+    string sent_at = 4;
+}
+
+message SendMessageResponse {
+    string message_id = 1;
+}
+
+
+// Load conversation objects.
+
+message LoadConversationRequest {
+    string conversation_id = 1;
+}
+
+message LoadConversationResponse {
+    repeated Message messages = 1;
+}
+
+message Message {
+    string message_id = 1;
+    string sender_id = 2;
+    string message = 3;
+    string sent_at = 4;
+}
+
+
+// Add user to conversation objects.
+
+message AddUserToConversationRequest {
+    string conversation_id = 1;
+    string user_id = 2;
+}
+
+message AddUserToConversationResponse {
+    string conversation_id = 1;
+    repeated string user_ids = 2;
+}
+
+
+// Remove user from conversation objects.
+
+message RemoveUserFromConversationRequest {
+    string conversation_id = 1;
+    string user_id = 2;
+}
+
+message RemoveUserFromConversationResponse {
+    string conversation_id = 1;
+    repeated string user_ids = 2;
+}
+
+
+// Create conversation objects.
+
+message CreateConversationRequest {
+    repeated string user_ids = 1;
+}
+
+message CreateConversationResponse {
+    string conversation_id = 1;
+}
+
+
+// Load conversations objects.
+
+message LoadConversationsRequest {
+    string user_id = 1;
+}
+
+message LoadConversationsResponse {
+    repeated Conversation conversations = 1;
+}
+
+message Conversation {
+    string conversation_id = 1;
+}
